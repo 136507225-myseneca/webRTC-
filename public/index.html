@@ -3,7 +3,8 @@
   <title>WebCall Communicator</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/peer.js"></script>
+  <!-- <script type="text/javascript" src="js/peer.js"></script> -->
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
   <script>
 
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -11,18 +12,8 @@
    
 	
     var name = prompt('Enter your name');
-    //var peer = new Peer(name,{host:'peer-server.donnieslist.com', secure:true, port:443,path:'/'})
-
-   var peer = new Peer(
-	name,{
-	host: 'peer-server.donnieslist.com',
-	port: 443,
-	debug: true,
-	config: { 'iceServers': [
-         { url: 'turn:159.89.230.166:3478', username: 'admin', credential: 'sigadmin' }
-	] }
-	}
-	);
+    var peer = new Peer(name,{host:'peer-server.donnieslist.com', secure:true, port:443,path:'/'})
+ 
 
 	
     console.log("index.html >> peer object created...");
