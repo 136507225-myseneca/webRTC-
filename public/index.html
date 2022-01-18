@@ -11,8 +11,18 @@
    
 	
     var name = prompt('Enter your name');
-    var peer = new Peer(name,{host:'peer-server.donnieslist.com', secure:true, port:443,path:'/'})
- 
+    //var peer = new Peer(name,{host:'peer-server.donnieslist.com', secure:true, port:443,path:'/'})
+
+   var peer = new Peer(
+	name,{
+	host: 'peer-server.donnieslist.com',
+	port: 443,
+	debug: true,
+	config: { 'iceServers': [
+         { url: 'turn:159.89.230.166:3478', username: 'admin', credential: 'sigadmin' }
+	] }
+	}
+	);
 
 	
     console.log("index.html >> peer object created...");
