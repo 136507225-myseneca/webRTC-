@@ -7,19 +7,13 @@
   <script>
 
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
+ 
    
 	
-	var peer = new Peer(
-	{
-	host: '159.89.230.166',
-	port: 9000,
-	debug: true,
-	//config: { 'iceServers': [
-   //{ url: 'turn:159.89.230.166:3478', username: 'admin', credential: 'sigadmin' }
-	//] }
-	}
-	);
+    var name = prompt('Enter your name');
+    var peer = new Peer(name,{host:'peer-server.donnieslist.com', secure:true, port:443,path:'/'})
+ 
+
 	
     console.log("index.html >> peer object created...");
 
@@ -35,6 +29,9 @@
       step3(call);
     });
     peer.on('error', function(err){
+      //alert(err.message);
+      // Return to step 2 if error occurs
+      //step2();
       alert(err.message);
       // Return to step 2 if error occurs
       step2();
